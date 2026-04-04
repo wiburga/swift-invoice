@@ -6,9 +6,9 @@ import {
   Sun,
   Moon,
   LogOut,
+  Search,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
-import { useLocation } from "react-router-dom";
 import { useTheme } from "@/hooks/useTheme";
 import { useAuth } from "@/hooks/useAuth";
 import {
@@ -34,7 +34,6 @@ const navItems = [
 export function AppSidebar() {
   const { state } = useSidebar();
   const collapsed = state === "collapsed";
-  const location = useLocation();
   const { theme, toggleTheme } = useTheme();
   const { signOut } = useAuth();
 
@@ -42,10 +41,10 @@ export function AppSidebar() {
     <Sidebar collapsible="icon">
       <SidebarContent>
         <div className="p-4 flex items-center gap-2">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-            <FileText className="h-4 w-4" />
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold text-sm">
+            F
           </div>
-          {!collapsed && <span className="font-bold text-lg">FacturaEC</span>}
+          {!collapsed && <span className="font-bold text-lg tracking-tight">FacturaEC</span>}
         </div>
         <SidebarGroup>
           <SidebarGroupContent>
@@ -57,7 +56,7 @@ export function AppSidebar() {
                       to={item.url}
                       end={item.url === "/"}
                       className="hover:bg-accent/50"
-                      activeClassName="bg-accent text-primary font-medium"
+                      activeClassName="bg-accent text-accent-foreground font-medium"
                     >
                       <item.icon className="mr-2 h-4 w-4" />
                       {!collapsed && <span>{item.title}</span>}
